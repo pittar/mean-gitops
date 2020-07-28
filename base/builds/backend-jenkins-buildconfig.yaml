@@ -24,7 +24,9 @@ spec:
     jenkinsPipelineStrategy:
       env:
       - name: APP_NAME
-        value: mean-backend
+        value: backend
+      - name: PROJECT_BASE
+        value: mean-app
       - name: GIT_SOURCE_URL
         value: https://github.com/pittar/mean-backend.git
       - name: GIT_SOURCE_REF
