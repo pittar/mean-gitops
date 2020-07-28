@@ -1,0 +1,62 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    app.openshift.io/connects-to: mongodb
+  labels:
+    app: backend
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/instance: backend
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/part-of: mean-app
+    app.openshift.io/runtime: nodejs
+    app.openshift.io/runtime-version: "10"
+  name: backend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    app: backend
+    deploymentconfig: backend
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: backend
+        deploymentconfig: backend
+    spec:
+      containers:
+      - name: backend
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+  - type: ImageChange
+    imageChangeParams:
+      automatic: false
+      containerNames:
+      - backend
+      from:
+        kind: ImageStreamTag
+        name: backend:latest
+        namespace: cicd

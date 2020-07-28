@@ -1,0 +1,9 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+resources:
+  - backend-imagestream.yaml
+  - backend-jenkins-buildconfig.yaml
+  - backend-s2i.yaml
+  - frontend-imagestream.yaml
+  - frontend-jenkins-buildconfig.yaml
+  - frontend-s2i.yaml

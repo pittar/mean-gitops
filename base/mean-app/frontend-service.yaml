@@ -1,0 +1,28 @@
+kind: Service
+apiVersion: v1
+metadata:
+  creationTimestamp: null
+  labels:
+    app: frontend
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/instance: frontend
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/part-of: mean-app
+  name: frontend
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: 8443-tcp
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: frontend
+    deploymentconfig: frontend
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

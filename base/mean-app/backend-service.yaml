@@ -1,0 +1,27 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: backend
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/instance: backend
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/part-of: mean-app
+  name: backend
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: 8443-tcp
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: backend
+    deploymentconfig: backend
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

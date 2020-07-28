@@ -1,0 +1,14 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+resources:
+  - mongodb-params-secret.yaml
+  - mongodb-secret.yaml
+  - mongodb-pvc.yaml
+  - mongodb-dc.yaml
+  - mongodb-svc.yaml
+  - backend-deploymentconfig.yaml
+  - backend-route.yaml
+  - backend-service.yaml
+  - frontend-deploymentconfig.yaml
+  - frontend-route.yaml
+  - frontend-service.yaml
