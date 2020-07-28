@@ -1,0 +1,6 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: backend
+spec:
+  host: mean-dev.apps.cluster-a03c.a03c.example.opentlc.com

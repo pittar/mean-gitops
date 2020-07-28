@@ -5,3 +5,6 @@ bases:
   - ../../base/mean-app
 resources:
   - namespace.yaml
+patchesStrategicMerge:
+  - patch-backend-route.yaml
+  - patch-frontend-route.yaml
