@@ -4,7 +4,7 @@ resources:
   - mongodb-params-secret.yaml
   - mongodb-secret.yaml
   - mongodb-pvc.yaml
-  - mongodb-dc.yaml
+  - mongodb-deploymentconfig.yaml
   - mongodb-svc.yaml
   - backend-deploymentconfig.yaml
   - backend-route.yaml

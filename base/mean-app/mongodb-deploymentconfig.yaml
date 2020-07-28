@@ -2,6 +2,13 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   labels:
+    app: mongodb
+    app.kubernetes.io/component: mongodb
+    app.kubernetes.io/instance: mongodb
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/part-of: mean-app
+    app.openshift.io/runtime: mongodb
+    app.openshift.io/runtime-version: "3.6"
     template: mongodb-persistent-template
   name: mongodb
 spec:

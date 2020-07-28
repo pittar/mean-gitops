@@ -30,13 +30,12 @@ spec:
     type: Rolling
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: frontend
         deploymentconfig: frontend
     spec:
       containers:
-      - name: appfrontend
+      - name: frontend
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
