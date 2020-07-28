@@ -41,3 +41,13 @@ If you want Jenkins to be able to rollout changed to DEV and UAT, then you will 
 oc policy add-role-to-user admin system:serviceaccount:cicd:jenkins -n mean-app-dev
 oc policy add-role-to-user admin system:serviceaccount:cicd:jenkins -n mean-app-uat
 ```
+
+## Debug: ImageStreams
+
+If your cluster doesn't have the NodeJS 12 or Nginx 1.14 base image, you an import them with the following commands:
+
+```
+oc project openshift
+oc import-image nginx:1.14 --from registry.redhat.io/rhscl/nginx-114-rhel7 --reference-policy='local' --confirm
+oc import-image nodejs:12 --from registry.redhat.io/rhscl/nodejs-12-rhel7 --reference-policy='local' --confirm
+```
